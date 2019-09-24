@@ -1,0 +1,26 @@
+{% extends 'account/base.html' %}
+{% load static %}
+{% block main %}
+<div class="bg0 p-t-95 p-b-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 p-b-50">
+                <div class="p-r-15 p-rl-0-lg">
+                    <h4 class="txt-m-124 cl3 p-b-28">
+                        Edit Your Account.
+                    </h4>
+                    <form action="." method="POST" enctype="multipart/form-data" class="how-bor3 p-rl-30 p-tb-32">
+                        {{ user_form.as_p }}
+                        {{ profile_form.as_p }}
+                        {% csrf_token %}
+                        <div class="flex-w flex-m p-t-15 p-b-10">
+                            <button type="submit" class="flex-c-m txt-s-105 cl0 bg10 size-a-39 hov-btn2 trans-04 p-rl-10 m-r-18">
+                                Save Changes
+                            </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

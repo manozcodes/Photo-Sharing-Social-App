@@ -131,6 +131,18 @@
             </div>
         </div>
     </header>
+    <div class="ml-5 mr-5 mt-5">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">
+            {{ message|safe }}
+            <a href="#" class="close">x</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
 
     {% block main %}
     {% endblock %}

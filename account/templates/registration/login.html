@@ -25,13 +25,12 @@
                                 Login
                             </button>
                             <div class="flex-w flex-m p-tb-8">
-                                <input id="check-creatacc" class="size-a-35 m-r-10" type="checkbox" name="creatacc">
-                                <label for="check-creatacc" class="txt-s-101 cl9">
-                                    Create an account?
-                                </label>
+                                <a href="{% url 'register' %}" class="txt-s-101 cl9 hov-cl10 trans-04">
+                                    Create account.
+                                </a>
                             </div>
                         </div>
-                        <a href="#" class="txt-s-101 cl9 hov-cl10 trans-04">
+                        <a href="{% url 'password_reset' %}" class="txt-s-101 cl9 hov-cl10 trans-04">
                             Lost your password?
                         </a>
                     </form>
