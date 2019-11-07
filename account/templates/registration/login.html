@@ -32,6 +32,12 @@
                         </div>
                         <a href="{% url 'password_reset' %}" class="txt-s-101 cl9 hov-cl10 trans-04">
                             Lost your password?
+                        </a><br>
+                        <a href="{% url 'social:begin' 'facebook' %}" class="txt-s-101 cl9 hov-cl10 trans-04">
+                            Login with facebook
+                        </a><br>
+                        <a href="{% url 'social:begin' 'twitter' %}" class="txt-s-101 cl9 hov-cl10 trans-04">
+                            Login with twitter
                         </a>
                     </form>
                 </div>

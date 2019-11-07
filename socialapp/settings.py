@@ -26,7 +26,7 @@ SECRET_KEY = '6(27dq$2g(xdu@fa(!#n3zsn)ed08d0i%+-pn05lwh&nmnuz#^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,18 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '2367484349973490'
+SOCIAL_AUTH_FACEBOOK_SECRET = '09587abb5226585d61c56c0fee19b674'
+
+SOCIAL_AUTH_TWITTER_KEY = 'YLgoBxeN6VkD4g8yJDaIEYW0Z'
+SOCIAL_AUTH_TWITTER_SECRET = 'mvflHvjRnrQZEgfyjMnKQh4ZuoxPksSfTjs2q8VhKki9X5nQJO'
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
+]
