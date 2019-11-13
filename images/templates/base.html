@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Account</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/linearicons-v1.0.0/icon-font.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/slick/slick.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/lightbox2/css/lightbox.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bookmarklet.css' %}">
+    <!--===============================================================================================-->
+</head>
+
+<body class="animsition">
+    <!-- Header -->
+    <header>
+        <!-- Header desktop -->
+        <div class="container-menu-desktop">
+            <div class="wrap-menu-desktop">
+                <nav class="limiter-menu-desktop">
+                    <div class="left-header">
+                        <!-- Logo desktop -->
+                        <div class="logo">
+                            <a href="index.html"><img src="{% static 'images/main-logo.jpg' %}" alt="IMG-LOGO"></a>
+                        </div>
+                    </div>
+                    <div class="center-header">
+                        <!-- Menu desktop -->
+                        <div class="menu-desktop">
+                            {% if request.user.is_authenticated %}
+                            <ul class="main-menu">
+                                <li {% if section == "dashboard" %} class="active-menu" {% endif %}>
+                                    <a href="{% url 'dashboard' %}">My Dashboard</a>
+                                </li>
+                                <li {% if section == "images" %} class="active-menu" {% endif %}>
+                                    <a href="">Images</a>
+                                </li>
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="right-header">
+                        <!-- Icon header -->
+                        <div class="wrap-icon-header flex-w flex-r-m h-full wrap-menu-click p-t-8">
+                            <div class="h-full flex-m">
+                                <div class="icon-header-item flex-c-m trans-04 js-show-modal-search">
+                                    <img src="{% static 'images/icons/icon-search.png' %}" alt="SEARCH">
+                                </div>
+                            </div>
+                            <div class="h-full flex-m">
+                                {% if request.user.is_authenticated %}
+                                Hello {{ request.user.first_name }}, <a href="{% url 'logout' %}">Logout</a>
+                                {% else %}
+                                <a href="{% url 'login' %}">Login</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Header Mobile -->
+        <div class="wrap-header-mobile">
+            <!-- Logo moblie -->
+            <div class="logo-mobile">
+                <a href="index.html"><img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO"></a>
+            </div>
+            <!-- Icon header -->
+            <div class="wrap-icon-header flex-w flex-r-m h-full wrap-menu-click m-r-15">
+                <div class="h-full flex-m">
+                    <div class="icon-header-item flex-c-m trans-04 js-show-modal-search">
+                        <img src="{% static 'images/icons/icon-search.png' %}" alt="SEARCH">
+                    </div>
+                </div>
+            </div>
+            <!-- Button show menu -->
+            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </div>
+        </div>
+        <!-- Menu Mobile -->
+        <div class="menu-mobile">
+            <ul class="main-menu-m">
+                <li>
+                    <a href="index.html">Home</a>
+                    <span class="arrow-main-menu-m">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <!-- Modal Search -->
+        <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+            <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+                <span class="lnr lnr-cross"></span>
+            </button>
+            <div class="container-search-header">
+                <form class="wrap-search-header flex-w">
+                    <button class="flex-c-m trans-04">
+                        <span class="lnr lnr-magnifier"></span>
+                    </button>
+                    <input class="plh1" type="text" name="search" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+    </header>
+    <div class="ml-5 mr-5 mt-5">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">
+            {{ message|safe }}
+            <a href="#" class="close">x</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+    {% block main %}
+    {% endblock %}
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+    <script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/slick/slick.min.js' %}"></script>
+    <script src="{% static 'js/slick-custom.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/parallax100/parallax100.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/lightbox2/js/lightbox.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/isotope/isotope.pkgd.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/sweetalert/sweetalert.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
