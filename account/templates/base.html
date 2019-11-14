@@ -57,8 +57,8 @@
                                 <li {% if section == "dashboard" %} class="active-menu" {% endif %}>
                                     <a href="{% url 'dashboard' %}">My Dashboard</a>
                                 </li>
-                                <li {% if section == "images" %} class="active-menu" {% endif %}>
-                                    <a href="">Images</a>
+                                <li {% if section == "images" %} class="selected" {% endif %}>
+                                    <a href="{% url 'images:list' %}">Images</a>
                                 </li>
                             </ul>
                             {% endif %}
